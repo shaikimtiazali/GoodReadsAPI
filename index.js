@@ -39,7 +39,7 @@ app.get("/books/", async (req, res) => {
 
 //Get Specific Books API
 app.get("/books/", async (req, res) => {
-  const {search_q="",order_by="book_id",order="ASC",limit=5,offset=2} = req.query;
+  const {search_q="", order_by="book_id",order="ASC",limit=5,offset=2} = req.query;
   const getBooksQuery = `SELECT * FROM book WHERE title LIKE '%${search_q}%' ORDER BY ${order_by} ${order} LIMIT ${limit} OFFSET ${offset};`;
   const booksArray = await db.all(getBooksQuery);
   res.send(booksArray);
